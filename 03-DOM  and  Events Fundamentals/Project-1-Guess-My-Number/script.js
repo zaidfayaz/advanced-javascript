@@ -3,14 +3,14 @@
 let guessNumber = Math.trunc(Math.random() * 20 + 1);
 let score = 20;
 let highScore = 0;
-document.querySelector('.number').textContent = guessNumber;
+// document.querySelector('.number').textContent = guessNumber;
   
 document.querySelector('.check').addEventListener('click', function(){
  const guess = Number(document.querySelector('.guess').value);
  console.log(guess,  typeof guess);
 
 //when there is no input
- if (guess === 0){
+ if (!guess){
     document.querySelector('.message').textContent = 'No number written';
   //when player wins the game
  }else if ( guess === guessNumber){
@@ -23,7 +23,7 @@ document.querySelector('.check').addEventListener('click', function(){
         document.querySelector('.highscore').textContent = highScore;
     }
 } // when guess is wrong 
-if ( guess !== guessNumber){
+else if ( guess !== guessNumber){
     if ( score > 1){
         document.querySelector('.message').textContent = guess > guessNumber ? 'Too High!': 'Too Low ';
         score--;
@@ -32,10 +32,10 @@ if ( guess !== guessNumber){
             document.querySelector('.message').textContent = ' You lost the game';
             document.querySelector('.score').textContent = 0;
         }
-}
+ }
 
 //     //when guess is too hogh
-//  }else if (guess > guessNumber){
+//  else if (guess > guessNumber){
 //     if ( score > 1){
 //      document.querySelector('.message').textContent = 'Too High!';
 //     score--;
@@ -45,12 +45,12 @@ if ( guess !== guessNumber){
 //     document.querySelector('.message').textContent = ' You lost the game';
 //     document.querySelector('.score').textContent = 0;
 // }
-// //when guess is too low
+// // //when guess is too low
 // }else if (guess < guessNumber){
 //     if ( score > 1){
 //         document.querySelector('.message').textContent = 'Too Low!';
 //        score--;
-//        document.querySelector('.score').textContent = score;
+//        document.querySelector('.score').textContent = score; 
     
 //    }else {
 //        document.querySelector('.message').textContent = ' You lost the game';
